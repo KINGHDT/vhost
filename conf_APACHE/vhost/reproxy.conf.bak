@@ -1,0 +1,19 @@
+<VirtualHost *:80>
+  ServerName sql.mochain.co
+  ServerAlias 47.244.112.18
+  ProxyRequests off
+  Header set Access-Control-Allow-Origin *
+<Proxy *>
+    Order allow,deny
+    Allow from all
+</Proxy>
+
+	<Location /y>
+		ProxyPass  http://127.0.0.1:10088/
+		ProxyPassReverse http://127.0.0.1:10088/
+	</Location>
+	<Location /x>
+		ProxyPass  http://127.0.0.1:10089/
+		ProxyPassReverse http://127.0.0.1:10089/
+	</Location>
+</VirtualHost>
